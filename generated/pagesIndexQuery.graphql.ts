@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8cd1b725bfc2271597af018ec1e9e066>>
+ * @generated SignedSource<<cbbfdc2f6a138b77de44b103e80a238a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,12 +9,13 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
+import { FragmentRefs } from "relay-runtime";
+import userFullNameResolver from "../resolvers/fullNameResolver.js";
 export type pagesIndexQuery$variables = {};
 export type pagesIndexQuery$data = {
   readonly users: ReadonlyArray<{
-    readonly firstName: string;
+    readonly fullName: ReturnType<typeof userFullNameResolver> | null;
     readonly id: string;
-    readonly lastName: string;
   }>;
 };
 export type pagesIndexQuery = {
@@ -23,47 +24,46 @@ export type pagesIndexQuery = {
 };
 
 const node: ConcreteRequest = (function(){
-var v0 = [
-  {
-    "alias": null,
-    "args": null,
-    "concreteType": "User",
-    "kind": "LinkedField",
-    "name": "users",
-    "plural": true,
-    "selections": [
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "id",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "lastName",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "firstName",
-        "storageKey": null
-      }
-    ],
-    "storageKey": null
-  }
-];
+var v0 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
+};
 return {
   "fragment": {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
     "name": "pagesIndexQuery",
-    "selections": (v0/*: any*/),
+    "selections": [
+      {
+        "alias": null,
+        "args": null,
+        "concreteType": "User",
+        "kind": "LinkedField",
+        "name": "users",
+        "plural": true,
+        "selections": [
+          (v0/*: any*/),
+          {
+            "alias": null,
+            "args": null,
+            "fragment": {
+              "args": null,
+              "kind": "FragmentSpread",
+              "name": "fullNameResolver"
+            },
+            "kind": "RelayResolver",
+            "name": "fullName",
+            "resolverModule": require('./../resolvers/fullNameResolver'),
+            "path": "users.fullName"
+          }
+        ],
+        "storageKey": null
+      }
+    ],
     "type": "Query",
     "abstractKey": null
   },
@@ -72,19 +72,46 @@ return {
     "argumentDefinitions": [],
     "kind": "Operation",
     "name": "pagesIndexQuery",
-    "selections": (v0/*: any*/)
+    "selections": [
+      {
+        "alias": null,
+        "args": null,
+        "concreteType": "User",
+        "kind": "LinkedField",
+        "name": "users",
+        "plural": true,
+        "selections": [
+          (v0/*: any*/),
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "firstName",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "lastName",
+            "storageKey": null
+          }
+        ],
+        "storageKey": null
+      }
+    ]
   },
   "params": {
-    "cacheID": "a86de40aec150ab07f4135debe3a3995",
+    "cacheID": "02689c0ddbd9b223d5d0c250c6a103cb",
     "id": null,
     "metadata": {},
     "name": "pagesIndexQuery",
     "operationKind": "query",
-    "text": "query pagesIndexQuery {\n  users {\n    id\n    lastName\n    firstName\n  }\n}\n"
+    "text": "query pagesIndexQuery {\n  users {\n    id\n    ...fullNameResolver\n  }\n}\n\nfragment fullNameResolver on User {\n  firstName\n  lastName\n}\n"
   }
 };
 })();
 
-(node as any).hash = "c6c3452ef6456b71503c02d716c531e8";
+(node as any).hash = "3dddbdfdcd902f7b6392f5441854819b";
 
 export default node;

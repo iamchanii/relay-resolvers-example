@@ -10,8 +10,7 @@ export default function Home() {
       query pagesIndexQuery {
         users {
           id
-          lastName
-          firstName
+          fullName
         }
       }
     `,
@@ -31,9 +30,7 @@ export default function Home() {
 
         <ul>
           {data.users.map((user) => (
-            <li key={user.id}>
-              {user.lastName} {user.firstName}
-            </li>
+            <li key={user.id}>{user.fullName}</li>
           ))}
         </ul>
       </main>

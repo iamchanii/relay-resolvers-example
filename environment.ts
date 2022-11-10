@@ -1,15 +1,16 @@
 import { useMemo } from 'react';
+import * as RelayRuntime from 'relay-runtime';
 import {
-  commitLocalUpdate,
   Environment,
   FetchFunction,
   Network,
   RecordSource,
-  ROOT_TYPE,
   Store,
 } from 'relay-runtime';
 import RelayModernEnvironment from 'relay-runtime/lib/store/RelayModernEnvironment';
 import type { RecordMap } from 'relay-runtime/lib/store/RelayStoreTypes';
+
+RelayRuntime.RelayFeatureFlags.ENABLE_RELAY_RESOLVERS = true;
 
 let relayEnvironment: RelayModernEnvironment;
 
