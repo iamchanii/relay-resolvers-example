@@ -1,0 +1,21 @@
+{
+  "linter": {
+    "enabled": true,
+    "ignore": [".yarn", ".pnp.cjs", ".pnp.loader.mjs"],
+    "rules": {
+      "recommended": true
+    }
+  },
+  "formatter": {
+    "ignore": [".yarn", ".pnp.cjs", ".pnp.loader.mjs"],
+    "enabled": true,
+    "indentStyle": "space"
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "quoteProperties": "asNeeded",
+      "trailingComma": "all"
+    }
+  }
+}
