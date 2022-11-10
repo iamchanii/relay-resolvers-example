@@ -1,13 +1,13 @@
 {
   "linter": {
     "enabled": true,
-    "ignore": [".yarn", ".pnp.cjs", ".pnp.loader.mjs"],
+    "ignore": [".yarn", ".next", ".pnp.cjs", ".pnp.loader.mjs"],
     "rules": {
       "recommended": true
     }
   },
   "formatter": {
-    "ignore": [".yarn", ".pnp.cjs", ".pnp.loader.mjs"],
+    "ignore": [".yarn", ".next", ".pnp.cjs", ".pnp.loader.mjs"],
     "enabled": true,
     "indentStyle": "space"
   },
