@@ -1,5 +1,7 @@
 {
   "name": "relay-resolvers-example",
+  "description": "An example project to explain and practice Relay Resolver",
+  "keywords": ["relay", "relay resolvers", "graphql", "graphql-yoga", "pothos", "typescript", "next", "create-next-app"],
   "version": "0.1.0",
   "private": true,
   "scripts": {
